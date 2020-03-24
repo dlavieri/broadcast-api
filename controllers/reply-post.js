@@ -1,13 +1,12 @@
-const User = require('../models/user');
-
+const Post = require('../models/post');
 
 module.exports = (req, res, next) => {
+    const post = req.params.post_id;
     const content = req.body.content;
-    const user = req.body.username;
 
-    User.findByPk(user)
-        .then(user => {
-            return user.createPost({content: content})
+    Post.findByPk(post)
+        .then(post => {
+            post.createReply({content: content});
         })
         .then(() => {
             res.status(200).end();

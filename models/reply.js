@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('./index');
 
-const Post = sequelize.define('post', {
+const Reply = sequelize.define('reply', {
     _id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
@@ -11,12 +11,8 @@ const Post = sequelize.define('post', {
     content: {
         type: Sequelize.STRING,
         allowNull: false,
-    },
-    broadcasts: {
-        type: Sequelize.INTEGER,
-        defaultValue: 0,
-    },
+    }
 });
 
 
-module.exports = Post;
+module.exports = Reply;

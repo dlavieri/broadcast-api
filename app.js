@@ -5,6 +5,7 @@ const User = require('./models/user');
 const Trend = require('./models/trend');
 const TrendPost = require('./models/trend-post');
 const Post = require('./models/post');
+const Reply = require('./models/reply');
 const sequelize = require('./models/index');
 
 const routes = require('./routes/routes');
@@ -22,7 +23,11 @@ app.use((req, res, next) => {
 app.use(routes);
 // establish database relationships
 User.hasMany(Post, { constraints: true, onDelete: 'CASCADE' });
+User.hasMany(Reply, { constraints: true, onDelete: 'CASCADE' });
 Post.belongsTo(User);
+Reply.belongsTo(User);
+Post.hasMany(Reply, { constraints: true, onDelete: 'CASCADE '});
+Reply.belongsTo(Post);
 Post.belongsToMany(Trend, { through: TrendPost });
 
 // sync database, listen on port
