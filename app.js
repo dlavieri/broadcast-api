@@ -31,7 +31,7 @@ Reply.belongsTo(Post);
 Post.belongsToMany(Trend, { through: TrendPost });
 
 // sync database, listen on port
-sequelize.sync({force: true})
+sequelize.sync()
     .then(() => {
         app.listen(process.env.PORT || 8080);
         console.log('app listening on port 8080');
