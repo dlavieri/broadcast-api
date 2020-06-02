@@ -3,10 +3,15 @@ const Post = require('../models/post');
 
 module.exports = (req, res, next) => {
     let username = req.params.username;
-
-    User.findAll({where: {username: username}, include: [{model: Post}] })
-        .then(users => {
-            return res.json(users[0])
+    
+    let userData;
+    User.findByPk(username)
+        .then(user => {
+            userData = user;
+            return Post.findAll({where: { userUsername: username}, order: [[ 'createdAt', 'DESC' ]]})
+        })
+        .then(posts => {
+            res.json({user: userData, posts: posts})
         })
         .catch(err => res.status(500).json({error: err}))
 }
