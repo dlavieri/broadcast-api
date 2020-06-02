@@ -6,7 +6,6 @@ module.exports = (req, res, next) => {
     let username = req.body.username;
     let password = req.body.password;
 
-    console.log(req)
     User.findByPk(username)
         .then(user => {
             if (user) {
