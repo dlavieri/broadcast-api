@@ -11,6 +11,10 @@ const Reply = sequelize.define('reply', {
     content: {
         type: Sequelize.STRING,
         allowNull: false,
+    },
+    user: {
+        type: Sequelize.STRING,
+        allowNull: false
     }
 });
 

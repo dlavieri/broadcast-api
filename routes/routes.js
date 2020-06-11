@@ -24,7 +24,7 @@ router.post('/new-post', newPostRoute);
 
 router.post('/delete-post/:post_id', deleteRoute)
 
-router.post('/reply/:post-id', replyRoute)
+router.post('/reply/:post_id', replyRoute)
 
 router.post('/signup', signupRoute);
 

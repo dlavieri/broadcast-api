@@ -23,11 +23,9 @@ app.use((req, res, next) => {
 app.use(routes);
 // establish database relationships
 User.hasMany(Post, { constraints: true, onDelete: 'CASCADE' });
-User.hasMany(Reply, { constraints: true, onDelete: 'CASCADE' });
 Post.belongsTo(User);
-Reply.belongsTo(User);
-Post.hasMany(Reply, { constraints: true, onDelete: 'CASCADE '});
 Reply.belongsTo(Post);
+Post.hasMany(Reply, { constraints: true, onDelete: 'CASCADE '});
 Post.belongsToMany(Trend, { through: TrendPost });
 
 // sync database, listen on port

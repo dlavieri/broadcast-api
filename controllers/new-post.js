@@ -4,7 +4,6 @@ const User = require('../models/user');
 module.exports = (req, res, next) => {
     const content = req.body.content;
     const user = req.body.username;
-    console.log(req.body);
     
     User.findByPk(user)
         .then(user => {
