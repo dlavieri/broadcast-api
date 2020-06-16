@@ -7,10 +7,10 @@ module.exports = (req, res, next) => {
 
     Post.findByPk(post)
         .then(post => {
-            post.createReply({content: content, user: user});
+            return post.createReply({content: content, user: user});
         })
-        .then(() => {
-            res.status(200).end();
+        .then(reply => {
+            res.status(200).json({reply: reply});
         })
         .catch(err => {
             res.statusMessage = err;

@@ -12,8 +12,8 @@ module.exports = (req, res, next) => {
             }
             return user.createPost({content: content})
         })
-        .then(() => {
-            res.status(200).end();
+        .then(post => {
+            res.status(200).json({post: post});
         })
         .catch(err => {
             res.statusMessage = err;
